@@ -9,7 +9,7 @@ module.exports = class WebSocketServer {
      * @param {string} host 
      */
     constructor(port, host) {
-        if( host == undefined ) {
+        if( !host ) {
             this._server = new WebSocket.Server({port: port})
         }else {
             this._server = new WebSocket.Server({port: port, host: host});
