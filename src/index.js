@@ -4,7 +4,8 @@ const WebSocketServer = require("./WebSocketServer");
 
 let roomId = "";
 // const server = new WebSocketServer(8080, "localhost");
-const server = new WebSocketServer(process.env.PORT, "https://panda-reversi-server.herokuapp.com/")
+// const server = new WebSocketServer(process.env.PORT, "https://panda-reversi-server.herokuapp.com/")
+const server = new WebSocketServer(process.env.PORT)
 /**
  * @param {WebSocketClient} ws 
  */
