@@ -33,7 +33,7 @@ class App {
             }
         };
 
-        this.wsClient = new WebSocketClient("ws://panda-othello-server.herokuapp.com/", callback.bind(this));
+        this.wsClient = new WebSocketClient("wss://panda-othello-server.herokuapp.com/", callback.bind(this));
         this.ui.addClickEvent(this.onClick.bind(this));
     }
 
