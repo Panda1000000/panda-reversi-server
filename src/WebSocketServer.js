@@ -2,17 +2,22 @@ const WebSocket = require("ws");
 const Message   = require("./Message")
 const WebSocketClient = require("./WebSocketClient");
 const crypto = require("crypto");
+const http   = require("http");
 
 module.exports = class WebSocketServer {
     /**
-     * @param {number} port 
-     * @param {string} host 
+     * @param {Object} params 
+     * @param {number?} params.port
+     * @param {string?} params.host
+     * @param {http.Server?} params.server
      */
-    constructor(port, host) {
-        if( !host ) {
-            this._server = new WebSocket.Server({port: port})
+    constructor(params) {
+        if( params.server ) {
+            this._server = new WebSocket.Server({server: params.server});
+        }else if ( !(params.host) ) {
+            this._server = new WebSocket.Server({port: params.port});
         }else {
-            this._server = new WebSocket.Server({port: port, host: host});
+            this._server = new WebSocket.Server({port: params.port, host: params.host});
         }
         /**
          * @type {Object.<string, WebSocketClient>}
